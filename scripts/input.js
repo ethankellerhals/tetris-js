@@ -1,4 +1,4 @@
-import { moveTetriminoLeft, moveTetriminoRight, moveTetriminoDown, rotateTetrimino } from './board.js';
+import { moveTetriminoLeft, moveTetriminoRight, moveTetriminoDown, rotateTetriminoClockwise } from './board.js';
 
 export function initInput() {
 	document.addEventListener('keydown', handleKeyPress);
@@ -16,7 +16,10 @@ function handleKeyPress(event) {
 			moveTetriminoDown();
 			break;
 		case 'ArrowUp':
-			rotateTetrimino();
+			rotateTetriminoClockwise();
 			break;
+		// case 'SpaceBar':
+		// 	rotateTetriminoCounterClockwise();
+		// 	break;
 	}
 }
