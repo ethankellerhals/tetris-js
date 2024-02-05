@@ -23,6 +23,7 @@ export function initBoard() {
 
 export function updateBoard() {
 	if (inBounds(currentTetrimino, currentTetriminoPosition.row+1, currentTetriminoPosition.col)) {
+		// not sure how to fix this 
 		if (isArrowDownPressed === false) {
 			currentTetriminoPosition.row += fallingSpeed;
 		}
@@ -90,13 +91,18 @@ export function moveTetriminoDown() {
 export function rotateTetriminoClockwise() {
 	let currentVariation = currentTetrimino.currentVariationIndex;
 	const maxi = currentTetrimino.variations.length - 1;
+
 	if (currentVariation < maxi) {
 		currentVariation++;
 	} else {
 		currentVariation = 0;
 	}
-	currentTetrimino.currentVariationIndex = currentVariation;
-	currentTetrimino.variations[currentVariation];
+	const newVariation = currentTetrimino.variations[currentVariation];
+	if (inBounds(newVariation, currentTetriminoPosition.row, currentTetriminoPosition.col)) {
+
+		currentTetrimino.currentVariationIndex = currentVariation;
+		currentTetrimino.variations[currentVariation];
+	}
 }
 
 export function rotateTetriminoCounterClockwise() {
@@ -107,8 +113,13 @@ export function rotateTetriminoCounterClockwise() {
 	} else {
 		currentVariation = maxi;
 	}
-	currentTetrimino.currentVariationIndex = currentVariation;
-	currentTetrimino.variations[currentVariation];
+	const newVariation = currentTetrimino.variations[currentVariation];
+	currentTetrimino = currentTetrimino.variations[currentVariation];
+	console.log("new", currentTetrimino.variations[currentTetrimino.currentVariationIndex]);
+	if (inBounds(newVariation, currentTetriminoPosition.row, currentTetriminoPosition.col)) {
+		currentTetrimino.currentVariationIndex = currentVariation;
+		//currentTetrimino.variations[currentVariation];
+	}
 }
 
 export function getRandomTetrimino() {
@@ -119,6 +130,7 @@ export function getRandomTetrimino() {
 
 
 function inBounds(tetrimino, row, col) {
+	
     for (let rowIndex = 0; rowIndex < tetrimino.variations[tetrimino.currentVariationIndex].length; rowIndex++) {
         for (let colIndex = 0; colIndex < tetrimino.variations[tetrimino.currentVariationIndex][rowIndex].length; colIndex++) {
             if (
