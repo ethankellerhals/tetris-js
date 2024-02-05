@@ -1,8 +1,9 @@
 import { TETRIMINOS } from "./tetriminos.js";
 import { updateScore } from './score.js';
-import { isArrowDownPressed } from "./input.js";
+
 const ROWS = 20;
 const COLS = 10;
+
 const EMPTY = 'black';
 const FALL = 1;
 
@@ -16,17 +17,17 @@ export function initBoard() {
 }
 
 export function updateBoard() {
+
 	if (inBounds(currentTetrimino.variations[currentTetrimino.currentVariationIndex], currentTetriminoPosition.row + 1, currentTetriminoPosition.col)) {
-		// not sure how to fix this 
-		
+
 		currentTetriminoPosition.row += FALL;
-		
-		
+
 	} else { 
+
 		const currentVariation = currentTetrimino.currentVariationIndex
 
 		if (currentTetriminoPosition.row <= 0) {
-			
+			// game over
 			return false;
 		}
 
@@ -78,6 +79,7 @@ export function move(m) {
 		if (currentTetriminoPosition.row < ROWS) {
 			if (inBounds(currentTetrimino.variations[currentTetrimino.currentVariationIndex], currentTetriminoPosition.row + 1, currentTetriminoPosition.col)) {
 				currentTetriminoPosition.row++;
+				updateScore(1);
 			}
 		}
 	}
@@ -114,7 +116,6 @@ export function getRandomTetrimino() {
 	return TETRIMINOS[tetriminoKeys[randomIndex]];
 }
 
-
 function inBounds(tetriminoVariation, row, col) {
 	for (let rowIndex = 0; rowIndex < tetriminoVariation.length; rowIndex++) {
 		for (let colIndex = 0; colIndex < tetriminoVariation[rowIndex].length; colIndex++) {
@@ -134,63 +135,3 @@ function inBounds(tetriminoVariation, row, col) {
 	}
 	return true;
 }
-
-
-// export function moveTetriminoLeft() {
-// 	if (currentTetriminoPosition.col > 0) {
-// 		if (inBounds(currentTetrimino.variations[currentTetrimino.currentVariationIndex], currentTetriminoPosition.row, currentTetriminoPosition.col-1)) {
-// 			currentTetriminoPosition.col--;
-// 		}
-// 	} 
-// }
-
-// export function moveTetriminoRight() {
-	
-// 	if (currentTetriminoPosition.col < COLS) {
-// 		if (inBounds(currentTetrimino.variations[currentTetrimino.currentVariationIndex], currentTetriminoPosition.row, currentTetriminoPosition.col+1)) {
-// 			currentTetriminoPosition.col++;
-// 		}
-// 	}
-// }
-
-// export function moveTetriminoDown() {
-// 	if (currentTetriminoPosition.row < ROWS) {
-// 		if (inBounds(currentTetrimino.variations[currentTetrimino.currentVariationIndex], currentTetriminoPosition.row, currentTetriminoPosition.col)) {
-// 			currentTetriminoPosition.row++;
-// 		}
-// 	}
-// }
-
-
-// export function rotateTetriminoClockwise() {
-// 	let currentVariation = currentTetrimino.currentVariationIndex;
-// 	const maxi = currentTetrimino.variations.length - 1;
-
-// 	if (currentVariation < maxi) {
-// 		currentVariation++;
-// 	} else {
-// 		currentVariation = 0;
-// 	}
-// 	const newVariation = currentTetrimino.variations[currentVariation];
-// 	if (inBounds(newVariation, currentTetriminoPosition.row, currentTetriminoPosition.col)) {
-
-// 		currentTetrimino.currentVariationIndex = currentVariation;
-// 		currentTetrimino.variations[currentVariation];
-// 	}
-// }
-
-// export function rotateTetriminoCounterClockwise() {
-// 	let currentVariation = currentTetrimino.currentVariationIndex;
-// 	const maxi = currentTetrimino.variations.length - 1;
-// 	if (currentVariation > 0) {
-// 		currentVariation--;
-// 	} else {
-// 		currentVariation = maxi;
-// 	}
-// 	const newVariation = currentTetrimino.variations[currentVariation];
-// 	if (inBounds(newVariation, currentTetriminoPosition.row, currentTetriminoPosition.col)) {
-
-// 		currentTetrimino.currentVariationIndex = currentVariation;
-// 		currentTetrimino.variations[currentVariation];
-// 	}
-// }

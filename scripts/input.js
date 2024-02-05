@@ -1,8 +1,6 @@
 import { move, rotate } from './board.js';
-import { updateScore } from './score.js';
-let keyState = {};
 
-export let isArrowDownPressed = false;
+let keyState = {};
 
 export function initInput() {
 	document.addEventListener('keydown', handleKeyDown);
@@ -11,20 +9,11 @@ export function initInput() {
 
 function handleKeyDown(event) {
 	keyState[event.key] = true;
-	if (event.key === 'ArrowDown') {
-		isArrowDownPressed = true;
-		
-	}
 	handleKeyPress();
 }
 
 function handleKeyUp(event) {
 	keyState[event.key] = false;
-
-	if (event.key === 'ArrowDown') {
-		isArrowDownPressed = false;
-		updateScore(1);
-	}
 }
 
 function handleKeyPress() {
@@ -38,7 +27,6 @@ function handleKeyPress() {
 
 	if (keyState['ArrowDown']) {
 		move('down');
-		// isArrowDownPressed = true;
 	}
 
 	if (keyState['ArrowUp']) {

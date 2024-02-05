@@ -1,6 +1,6 @@
 export const TETRIMINOS = {
     I: {
-        color: 'cyan',
+        color: '#04D9FF',
         variations: [
             [[1, 1, 1, 1]],
             [[1], [1], [1], [1]]
@@ -9,7 +9,7 @@ export const TETRIMINOS = {
     },
 
     J: {
-        color: 'blue',
+        color: '#035BFF',
         variations: [
             [[1, 0, 0], [1, 1, 1]],
             [[1, 1], [1, 0], [1, 0]],
@@ -20,7 +20,7 @@ export const TETRIMINOS = {
     },
 
     L: {
-        color: 'orange',
+        color: '#FFA703',
         variations: [
             [[0, 0, 1], [1, 1, 1]],
             [[1, 0], [1, 0], [1, 1]],
@@ -31,7 +31,7 @@ export const TETRIMINOS = {
     },
 
     O: {
-        color: 'yellow',
+        color: '#D9FF03',
         variations: [
             [[1, 1], [1, 1]]
         ],
@@ -39,7 +39,7 @@ export const TETRIMINOS = {
     },
 
     S: {
-        color: 'green',
+        color: '#5BFF03',
         variations: [
             [[0, 1, 1], [1, 1, 0]],
             [[1, 0], [1, 1], [0, 1]]            
@@ -48,7 +48,7 @@ export const TETRIMINOS = {
     },
 
     T: {
-        color: 'purple',
+        color: '#A703FF',
         variations: [
             [[0, 1, 0], [1, 1, 1]],
             [[1, 0], [1, 1], [1, 0]],
@@ -59,7 +59,7 @@ export const TETRIMINOS = {
     },
 
     Z: {
-        color: 'red',
+        color: '#FF2903',
         variations: [
             [[1, 1, 0], [0, 1, 1]],
             [[0, 1], [1, 1], [1, 0]]
