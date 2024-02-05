@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris Game</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
-<body>
-    <canvas id="gameCanvas" width="300" height="600"></canvas>
-    <script type="module" src="./scripts/tetris.js"></script>
-    <script type="module" src="./scripts/board.js"></script>
-    <script type="module" src="./scripts/render.js"></script>
-    <script type="module" src="./scripts/score.js"></script>
-    <script type="module" src="./scripts/input.js"></script>
-    <script type="module" src="./scripts/tetriminos.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tetris Game</title>
+        <link rel="stylesheet" href="./styles/styles.css">
+    </head>
+    <body>
+        <button id="play-button">Play</button>
+        <div id="score-container">
+            Score: <span id="score">0</span>
+        </div>
+
+        <canvas id="game-canvas" width="300" height="600"></canvas>
+        <cavnas id="game-over-canvas" width="300" height="600"></cavnas>
+        <div id="next-tetrimino-container">
+            Next Tetrimino
+            <canvas id="next-tetrimino-canvas" width="120" height="120"></canvas>
+            <canvas id="next-next-tetrimino-canvas" width="120" height="120"></canvas>
+        </div>
+        <script type="module" src="./scripts/tetris.js"></script>
+        <script type="module" src="./scripts/board.js"></script>
+        <script type="module" src="./scripts/render.js"></script>
+        <script type="module" src="./scripts/score.js"></script>
+        <script type="module" src="./scripts/input.js"></script>
+        <script type="module" src="./scripts/tetriminos.js"></script>
+    </body>
 </html>

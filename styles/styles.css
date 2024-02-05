@@ -5,22 +5,39 @@ body {
 	justify-content: center;
 	height: 100vh;
 	margin: 0;
+	background-color: #111111;
+}
+#score-container {
+	color: white;
+	margin-bottom: 27%;
+	margin-right: 2.5%;
+	border: 1px solid white;
+	padding: 1%;
 }
 
-.game-container {
-	text-align: center;
+#score {
+	color: white;
 }
 
-#game-board { 
+#next-tetrimino-container { 
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	margin-left: 2.5%;
+	margin-bottom: 27%;
+	border: 1px solid white;
+	padding: 2%;
+}
+
+/* #next-tetrimino-canvas { 
+	border: 1px solid white;
+	margin-top: 10px;
+} */
+#game-canvas {
 	display: grid;
 	grid-template-columns: repeat(10, 30px);
 	grid-gap: 1px;
 	border: 1px solid #333;
 	background-color: #000;
-}
-
-.cell { 
-	width: 30px;
-	height: 30px;
-	border: 1px solid #333;
 }
