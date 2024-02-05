@@ -1,5 +1,5 @@
 import { TETRIMINOS } from "./tetriminos.js";
-import { currentTetrimino, currentTetriminoPosition, board, nextTetrimino, nextnextTetrimino } from './board.js';
+import { currentTetrimino, currentTetriminoPosition, board, nextTetrimino } from './board.js';
 
 const gameCanvas = document.getElementById('game-canvas');
 const ctx = gameCanvas.getContext('2d');
@@ -8,7 +8,6 @@ export function renderGame() {
 	drawBoard();
 	drawTetrimino(currentTetrimino, currentTetriminoPosition, cellSize);
 	drawNextTetrimino(nextTetrimino);
-	// drawNextNextTetrimino(nextnextTetrimino);
 }
 
 function drawBoard() {
@@ -35,7 +34,7 @@ function drawTetrimino(tetrimino, position, cellSize) {
     });
 }
 
-export function drawNextTetrimino(nextTetrimino) {
+function drawNextTetrimino(nextTetrimino) {
 	
 	const nextTetriminoCanvas = document.getElementById('next-tetrimino-canvas');
 	const nextTetriminoCtx = nextTetriminoCanvas.getContext('2d');
@@ -51,19 +50,3 @@ export function drawNextTetrimino(nextTetrimino) {
 		});
 	});
 }
-
-// function drawNextNextTetrimino(nextNextTetrimino) {
-// 	const nextNextTetriminoCanvas = document.getElementById('next-next-tetrimino-canvas');
-// 	const nextNextTetriminoCtx = nextNextTetriminoCanvas.getContext('2d');
-// 	const nextNextCellSize = 30;
-
-// 	nextNextTetrimino.variations[0].forEach((row, rowIndex) => {
-// 		row.forEach((cell, colIndex) => {
-// 			if (cell == 1) {
-// 				nextNextTetriminoCtx.fillStyle = nextNextTetrimino.color;
-// 				nextNextTetriminoCtx.fillRect(colIndex * nextNextCellSize, rowIndex * nextNextCellSize, nextNextCellSize, nextNextCellSize, nextNextCellSize);
-// 				nextNextTetriminoCtx.strokeRect(colIndex * nextNextCellSize, rowIndex * nextNextCellSize, nextNextCellSize, nextNextCellSize);
-// 			}
-// 		});
-// 	});
-// }

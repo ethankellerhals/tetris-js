@@ -1,5 +1,5 @@
-import { moveTetriminoLeft, moveTetriminoRight, moveTetriminoDown, rotateTetriminoClockwise, rotateTetriminoCounterClockwise } from './board.js';
-
+import { move, rotate } from './board.js';
+import { updateScore } from './score.js';
 let keyState = {};
 
 export let isArrowDownPressed = false;
@@ -11,31 +11,42 @@ export function initInput() {
 
 function handleKeyDown(event) {
 	keyState[event.key] = true;
+	if (event.key === 'ArrowDown') {
+		isArrowDownPressed = true;
+		
+	}
 	handleKeyPress();
 }
 
 function handleKeyUp(event) {
 	keyState[event.key] = false;
+
 	if (event.key === 'ArrowDown') {
 		isArrowDownPressed = false;
+		updateScore(1);
 	}
 }
 
 function handleKeyPress() {
 	if (keyState['ArrowLeft']) {
-		moveTetriminoLeft();
+		move('left');
 	}
+
 	if (keyState['ArrowRight']) {
-		moveTetriminoRight();
+		move('right');
 	}
+
 	if (keyState['ArrowDown']) {
-		moveTetriminoDown();
-		isArrowDownPressed = true;
+		move('down');
+		// isArrowDownPressed = true;
 	}
+
 	if (keyState['ArrowUp']) {
-		rotateTetriminoClockwise();
+		rotate('clockwise');
 	}
+
 	if (keyState[' ']) {
-		rotateTetriminoCounterClockwise();
+		rotate('counterClockwise');
 	}
 }
+

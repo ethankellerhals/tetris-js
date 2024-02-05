@@ -1,6 +1,5 @@
 import { initBoard, updateBoard } from './board.js';
 import { initInput } from './input.js';
-import { updateScore } from './score.js';
 import { renderGame } from './render.js';
 import { TETRIMINOS } from './tetriminos.js';
 
@@ -10,18 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	game(0);
 });
 
-// let lastTime = 0;
-// let fallSpeed = 300;
-// let moveInterval = 200;
-// var lastLoop = new Date();
-
 let previousTime = 0;
 let accumulatedTime = 0;
 let frameRate = 1;
 let frameTime = 1000 / frameRate;
 let t = 0;
-
-
 
 function game(currentTime) {
 
@@ -36,17 +28,13 @@ function game(currentTime) {
 		
 	}
 	t += 1;
-	let a = false;
-	if (a == true) {
-		updateScore();
-	}
+
 	if (t % 6000 == 0) {
 		if (frameRate < 5) {
 			frameRate++;
 		} else {
 			frameRate += 5;
 		}	
-		
 	}
 	renderGame();
 	requestAnimationFrame(game);
